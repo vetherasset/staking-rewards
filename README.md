@@ -11,13 +11,16 @@ curl -L https://nixos.org/nix/install | sh
 
 # Install dapptools
 curl https://dapp.tools/install | sh
+
+# Install solidity
+nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
 ```
 
 ### Development
 
 ```shell
 # Compile
-dapp compile
+dapp --use solc:0.8.9 build
 
 # Test
 dapp test
