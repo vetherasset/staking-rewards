@@ -1,0 +1,32 @@
+{
+  "name": "staking-rewards",
+  "version": "1.0.0",
+  "description": "### Install",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "solhint -f table src/**/*.sol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vetherasset/staking-rewards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vetherasset/staking-rewards/issues"
+  },
+  "homepage": "https://github.com/vetherasset/staking-rewards#readme",
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.18",
+    "solhint": "^3.3.6"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.3.2"
+  }
+}

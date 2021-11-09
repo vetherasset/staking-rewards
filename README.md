@@ -14,14 +14,17 @@ curl https://dapp.tools/install | sh
 
 # Install solidity
 nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-static-versions.solc_0_8_9
+
+# npm
+npm i
 ```
 
 ### Development
 
 ```shell
 # Compile
-dapp --use solc:0.8.9 build
+dapp build
 
 # Test
-dapp --use solc:0.8.9 test
+dapp test
 ```
