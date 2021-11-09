@@ -3,7 +3,7 @@ pragma solidity ^0.8.6;
 
 import "ds-test/test.sol";
 
-import "./StakingRewards.sol";
+import "../StakingRewards.sol";
 
 contract StakingRewardsTest is DSTest {
     StakingRewards rewards;
