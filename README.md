@@ -23,5 +23,5 @@ nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA solc-s
 dapp --use solc:0.8.9 build
 
 # Test
-dapp test
+dapp --use solc:0.8.9 test
 ```
