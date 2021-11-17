@@ -3,6 +3,7 @@ pragma solidity 0.8.9;
 
 import "./Owned.sol";
 
+// TODO: remove
 abstract contract RewardsDistributionRecipient is Owned {
     address public rewardsDistribution;
 
