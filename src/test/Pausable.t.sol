@@ -36,10 +36,6 @@ contract PausableTest is DSTest {
     function test_setPaused() public {
         pausable.setPaused(true);
         assertTrue(pausable.paused());
-        assertEq(pausable.lastPauseTime(), block.timestamp);
-
-        pausable.setPaused(true);
-        assertTrue(pausable.paused());
 
         pausable.setPaused(false);
         assertTrue(!pausable.paused());
