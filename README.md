@@ -28,3 +28,9 @@ dapp build
 # Test
 dapp test
 ```
+
+### Deploy
+
+```shell
+hevm flatten --source-file src/StakingRewards.sol > tmp/flat.sol
+```
