@@ -153,7 +153,7 @@ contract StakingRewards is
     // Added to support recovering LP Rewards from other systems such as BAL to be distributed to holders
     function recoverERC20(address tokenAddress, uint tokenAmount) external onlyOwner {
         require(tokenAddress != address(stakingToken), "protected");
-        IERC20(tokenAddress).safeTransfer(owner, tokenAmount);
+        IERC20(tokenAddress).safeTransfer(msg.sender, tokenAmount);
         emit Recovered(tokenAddress, tokenAmount);
     }
 
