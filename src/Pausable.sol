@@ -10,7 +10,7 @@ abstract contract Pausable is Owned {
 
     constructor() {
         // This contract is abstract, and thus cannot be instantiated directly
-        require(owner != address(0), "Owner must be set");
+        require(owner != address(0), "owner = zero address");
         // Paused will be false, and lastPauseTime will be 0 upon initialisation
     }
 

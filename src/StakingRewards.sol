@@ -93,7 +93,7 @@ contract StakingRewards is
         notPaused
         updateReward(msg.sender)
     {
-        require(amount > 0, "Cannot stake 0");
+        require(amount > 0, "stake amount = 0");
         _totalSupply += amount;
         _balances[msg.sender] += amount;
         stakingToken.safeTransferFrom(msg.sender, address(this), amount);
@@ -101,7 +101,7 @@ contract StakingRewards is
     }
 
     function withdraw(uint amount) public nonReentrant updateReward(msg.sender) {
-        require(amount > 0, "Cannot withdraw 0");
+        require(amount > 0, "withdraw amount = 0");
         _totalSupply -= amount;
         _balances[msg.sender] -= amount;
         stakingToken.safeTransfer(msg.sender, amount);
@@ -143,7 +143,7 @@ contract StakingRewards is
         // very high values of rewardRate in the earned and rewardsPerToken functions;
         // Reward + leftover must be less than 2^256 / 10^18 to avoid overflow.
         uint balance = rewardsToken.balanceOf(address(this));
-        require(rewardRate <= balance / rewardsDuration, "Provided reward too high");
+        require(rewardRate <= balance / rewardsDuration, "reward > balance");
 
         lastUpdateTime = block.timestamp;
         periodFinish = block.timestamp + rewardsDuration;
@@ -152,19 +152,13 @@ contract StakingRewards is
 
     // Added to support recovering LP Rewards from other systems such as BAL to be distributed to holders
     function recoverERC20(address tokenAddress, uint tokenAmount) external onlyOwner {
-        require(
-            tokenAddress != address(stakingToken),
-            "Cannot withdraw the staking token"
-        );
+        require(tokenAddress != address(stakingToken), "protected");
         IERC20(tokenAddress).safeTransfer(owner, tokenAmount);
         emit Recovered(tokenAddress, tokenAmount);
     }
 
     function setRewardsDuration(uint _rewardsDuration) external onlyOwner {
-        require(
-            block.timestamp > periodFinish,
-            "Previous rewards period must be complete before changing the duration for the new period"
-        );
+        require(block.timestamp > periodFinish, "not finished");
         rewardsDuration = _rewardsDuration;
         emit RewardsDurationUpdated(_rewardsDuration);
     }
