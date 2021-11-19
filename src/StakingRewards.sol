@@ -76,8 +76,8 @@ contract StakingRewards is
 
     function earned(address account) public view returns (uint) {
         return
-            _balances[account] *
-            ((rewardPerToken() - userRewardPerTokenPaid[account]) / 1e18) +
+            ((_balances[account] *
+                (rewardPerToken() - userRewardPerTokenPaid[account])) / 1e18) +
             rewards[account];
     }
 
